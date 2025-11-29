@@ -1,0 +1,63 @@
+name: personal_finance
+description: "App para gestionar finanzas personales"
+publish_to: 'none'
+version: 1.0.0+1
+
+
+environment:
+  sdk: ^3.7.0
+
+workspace:
+  - packages/core
+  - packages/ui_kit
+  - packages/features/auth
+  - packages/features/transactions
+  - apps/personal_finance_app
+
+dev_dependencies:
+  melos: ^7.0.0-dev.8
+
+melos:
+  name: personal_finance
+
+  packages:
+    - apps/**
+    - packages/**
+
+  command:
+    bootstrap:
+      usePubspecOverrides: true
+
+  scripts:
+    analyze:
+      exec:
+        concurrency: 4
+      run: flutter analyze .
+
+    format:check:
+      run: dart format . --set-exit-if-changed
+
+    fix:
+      run: dart fix --apply
+
+    test:unit:
+      run: flutter test
+      packageFilters:
+        dirExists: test
+
+    quality:check:
+      run: format:check && analyze && test:unit
+
+    run-app:
+      description: Run app
+      exec: flutter run lib/main.dart
+      packageFilters:
+        flutter: true
+
+    build:
+      run: flutter pub run build_runner build --delete-conflicting-outputs
+      exec:
+        concurrency: 4
+      packageFilters:
+        flutter: true
+        dependsOn: build_runner
