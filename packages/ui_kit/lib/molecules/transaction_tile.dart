@@ -54,11 +54,14 @@ class TransactionTile extends StatelessWidget {
           color: context.theme.colorScheme.onSurfaceVariant,
         ),
       ),
-      trailing: Text(
-        amount,
-        style: context.textTheme.bodyLarge?.copyWith(
-          fontWeight: FontWeight.bold,
-          color: amountColor,
+      trailing: Padding(
+        padding: const EdgeInsets.only(right: 10),
+        child: Text(
+          amount,
+          style: context.textTheme.bodyLarge?.copyWith(
+            fontWeight: FontWeight.bold,
+            color: amountColor,
+          ),
         ),
       ),
     );
