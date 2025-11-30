@@ -18,4 +18,8 @@ export '/organisms/login_form.dart';
 export '/organisms/register_form.dart';
 export '/organisms/transaction_list_section.dart';
 
+// Templates
+export '/templates/auth_template.dart';
+export '/templates/dashboard_template.dart';
+
 export '/extension/context_extensions.dart';
