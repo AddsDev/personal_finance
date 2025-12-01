@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../atoms/app_button.dart';
 import '../atoms/app_input.dart';
 import '../extension/context_extensions.dart';
+import '../validators/app_validator.dart';
 
 class RegisterForm extends StatelessWidget {
   final TextEditingController nameController;
@@ -40,6 +41,8 @@ class RegisterForm extends StatelessWidget {
           controller: emailController,
           keyboardType: TextInputType.emailAddress,
           prefixIcon: Icons.email_outlined,
+          validator: AppValidators.email,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
         ),
         const SizedBox(height: 16),
         AppInput(
@@ -47,6 +50,8 @@ class RegisterForm extends StatelessWidget {
           isPassword: true,
           controller: passwordController,
           prefixIcon: Icons.lock_outline,
+          validator: (value) => AppValidators.password(value?.trim()),
+          autovalidateMode: AutovalidateMode.onUserInteraction,
         ),
         const SizedBox(height: 16),
         AppInput(
@@ -54,6 +59,9 @@ class RegisterForm extends StatelessWidget {
           isPassword: true,
           controller: confirmPasswordController,
           prefixIcon: Icons.lock_outline,
+          validator: (value) => AppValidators.password(value?.trim()),
+          textInputAction: TextInputAction.send,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
         ),
         const SizedBox(height: 32),
         AppButton(

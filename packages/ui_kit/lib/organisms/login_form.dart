@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../atoms/app_button.dart';
 import '../atoms/app_input.dart';
 import '../extension/context_extensions.dart';
+import '../validators/app_validator.dart';
 
 class LoginForm extends StatelessWidget {
   final TextEditingController emailController;
@@ -31,6 +32,9 @@ class LoginForm extends StatelessWidget {
           controller: emailController,
           keyboardType: TextInputType.emailAddress,
           prefixIcon: Icons.email_outlined,
+          validator: AppValidators.email,
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          textInputAction: TextInputAction.next,
         ),
         const SizedBox(height: 16),
         AppInput(
@@ -39,6 +43,7 @@ class LoginForm extends StatelessWidget {
           isPassword: true,
           controller: passwordController,
           prefixIcon: Icons.lock_outline,
+          textInputAction: TextInputAction.send,
         ),
         const SizedBox(height: 32),
         AppButton(

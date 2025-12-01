@@ -2,6 +2,7 @@ name: personal_finance_app
 description: "Una app de finanzas"
 publish_to: 'none'
 version: 0.1.0
+resolution: workspace
 
 environment:
   sdk: ^3.7.0
@@ -9,6 +10,13 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  ui_kit:
+  auth:
+  flutter_bloc: ^9.1.1
+  go_router: ^17.0.0
+  get_it: ^9.1.1
+  firebase_core: ^4.2.1
+  firebase_auth: ^6.1.2
 
 dev_dependencies:
   flutter_test:

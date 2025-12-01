@@ -9,6 +9,8 @@ class AppInput extends StatelessWidget {
   final String? Function(String?)? validator;
   final TextInputType keyboardType;
   final IconData? prefixIcon;
+  final TextInputAction? textInputAction;
+  final AutovalidateMode? autovalidateMode;
 
   const AppInput({
     super.key,
@@ -19,6 +21,8 @@ class AppInput extends StatelessWidget {
     this.validator,
     this.keyboardType = TextInputType.text,
     this.prefixIcon,
+    this.textInputAction = TextInputAction.next,
+    this.autovalidateMode = AutovalidateMode.disabled
   });
 
   @override
@@ -40,6 +44,8 @@ class AppInput extends StatelessWidget {
           validator: validator,
           keyboardType: keyboardType,
           style: context.textTheme.bodyLarge,
+          textInputAction: textInputAction,
+          autovalidateMode: autovalidateMode,
           decoration: InputDecoration(
             hintText: hint,
             prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
