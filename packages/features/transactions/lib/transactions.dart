@@ -1,5 +1,16 @@
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
-}
+library transactions;
+
+export 'di/transactions_dependency_injection.dart';
+
+export 'domain/entities/transaction.dart';
+export 'domain/entities/category.dart';
+
+export 'domain/usecases/add_transaction_usecase.dart';
+export 'domain/usecases/update_transaction_usecase.dart';
+export 'domain/usecases/get_categories_usecase.dart';
+
+export 'presentation/bloc/transaction_bloc.dart';
+export 'presentation/bloc/transaction_event.dart';
+export 'presentation/bloc/transaction_state.dart';
+export 'presentation/cubit/transaction_form_cubit.dart';
+export 'presentation/cubit/transaction_form_status.dart';

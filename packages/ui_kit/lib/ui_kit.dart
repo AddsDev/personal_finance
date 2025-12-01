@@ -23,3 +23,4 @@ export '/templates/auth_template.dart';
 export '/templates/dashboard_template.dart';
 
 export '/extension/context_extensions.dart';
+export '/formats/currency_helper.dart';
