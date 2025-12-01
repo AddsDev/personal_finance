@@ -2,8 +2,10 @@ import 'package:auth/presentation/bloc/auth_bloc.dart';
 import 'package:auth/presentation/pages/login_page.dart';
 import 'package:auth/presentation/pages/register_page.dart';
 import 'package:go_router/go_router.dart';
+import 'package:transactions/domain/entities/transaction.dart';
+import 'package:transactions/presentation/pages/transaction_form_page.dart';
 
-import '../../dashboard_page.dart';
+import '../../presentation/dashboard/dashboard_page.dart';
 import 'go_router_refresh_stream.dart';
 
 class AppRouter {
@@ -19,9 +21,8 @@ class AppRouter {
       GoRoute(
         path: '/login',
         builder:
-            (context, state) => LoginPage(
-              onRegisterTap: () => context.push('/register'),
-            ),
+            (context, state) =>
+                LoginPage(onRegisterTap: () => context.push('/register')),
       ),
 
       GoRoute(
@@ -36,7 +37,27 @@ class AppRouter {
       GoRoute(
         path: '/dashboard',
         builder: (context, state) {
-          return DashboardPage();
+          return DashboardPage(
+            onAddTransactionTap: (userId) => context.push('/add-transaction', extra: userId),
+          );
+        },
+      ),
+
+      GoRoute(
+        path: '/add-transaction',
+        builder: (_, state) {
+          return TransactionFormPage(userId: state.extra as String);
+        },
+      ),
+
+      GoRoute(
+        path: '/edit-transaction',
+        builder: (context, state) {
+          final transaction = state.extra as TransactionEntity;
+          return TransactionFormPage(
+            transactionToEdit: transaction,
+            userId: transaction.userId,
+          );
         },
       ),
     ],
