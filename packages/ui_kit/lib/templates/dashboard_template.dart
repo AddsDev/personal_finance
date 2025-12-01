@@ -5,7 +5,7 @@ class DashboardTemplate extends StatelessWidget {
   final Widget content;
   final VoidCallback? onAddTransaction;
   final String? userName;
-  final VoidCallback? onProfileTap;
+  final VoidCallback? onActionTap;
 
   const DashboardTemplate({
     super.key,
@@ -13,7 +13,7 @@ class DashboardTemplate extends StatelessWidget {
     required this.content,
     this.onAddTransaction,
     this.userName,
-    this.onProfileTap,
+    this.onActionTap,
   });
 
   @override
@@ -41,9 +41,9 @@ class DashboardTemplate extends StatelessWidget {
         ),
         actions: [
           IconButton(
-            onPressed: onProfileTap,
+            onPressed: onActionTap,
             icon: const CircleAvatar(
-              child: Icon(Icons.person),
+              child: Icon(Icons.logout),
             ),
           ),
           const SizedBox(width: 16),

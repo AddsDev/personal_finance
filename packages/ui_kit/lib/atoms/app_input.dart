@@ -11,6 +11,7 @@ class AppInput extends StatelessWidget {
   final IconData? prefixIcon;
   final TextInputAction? textInputAction;
   final AutovalidateMode? autovalidateMode;
+  final ValueChanged<String>? onChanged;
 
   const AppInput({
     super.key,
@@ -22,7 +23,8 @@ class AppInput extends StatelessWidget {
     this.keyboardType = TextInputType.text,
     this.prefixIcon,
     this.textInputAction = TextInputAction.next,
-    this.autovalidateMode = AutovalidateMode.disabled
+    this.autovalidateMode = AutovalidateMode.disabled,
+    this.onChanged,
   });
 
   @override
@@ -50,6 +52,7 @@ class AppInput extends StatelessWidget {
             hintText: hint,
             prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
           ),
+          onChanged: onChanged,
         ),
       ],
     );
