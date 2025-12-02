@@ -5,12 +5,24 @@ import '../data/datasources/transactions_remote_data_source.dart';
 import '../data/repositories/transactions_repository_impl.dart';
 import '../domain/repositories/transactions_repository.dart';
 import '../domain/usecases/add_transaction_usecase.dart';
+import '../domain/usecases/delete_transaction_usecase.dart';
 import '../domain/usecases/get_categories_usecase.dart';
 import '../domain/usecases/update_transaction_usecase.dart';
 import '../presentation/bloc/transaction_bloc.dart';
 
 class TransactionsDependencyInjection {
   static void inject(GetIt it) {
+
+    //External
+    if (!it.isRegistered<FirebaseFirestore>()) {
+      it.registerLazySingleton(() {
+        FirebaseFirestore.instance.settings = const Settings(
+          persistenceEnabled: true,
+        );
+        return FirebaseFirestore.instance;
+      });
+    }
+
     // Data Sources
     if (!it.isRegistered<TransactionsRemoteDataSource>()) {
       it.registerLazySingleton<TransactionsRemoteDataSource>(
@@ -37,6 +49,9 @@ class TransactionsDependencyInjection {
     );
     it.registerLazySingleton<GetCategoriesUseCase>(
       () => GetCategoriesUseCase(it<TransactionsRepository>()),
+    );
+    it.registerLazySingleton<DeleteTransactionUseCase>(
+      () => DeleteTransactionUseCase(it<TransactionsRepository>()),
     );
   }
 }
