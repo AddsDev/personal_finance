@@ -66,12 +66,7 @@ class _StatsView extends StatelessWidget {
                 _buildDateSelector(context, state.filterDate),
                 const SizedBox(height: 24),
                 //TODO: pasar a Atomic
-                _buildChartSection(
-                  context,
-                  'Gastos',
-                  expenses,
-                  true,
-                ),
+                _buildChartSection(context, 'Gastos', expenses, true),
               ],
             ),
           );

@@ -1,7 +1,6 @@
 import 'package:auth/presentation/bloc/auth_bloc.dart';
 import 'package:auth/presentation/pages/login_page.dart';
 import 'package:auth/presentation/pages/register_page.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:transactions/domain/entities/transaction.dart';
 import 'package:transactions/presentation/pages/transaction_form_page.dart';
