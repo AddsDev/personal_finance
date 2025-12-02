@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../extension/context_extensions.dart';
+
 enum AppButtonType { primary, danger, ghost }
 
 class AppButton extends StatelessWidget {
@@ -20,8 +22,7 @@ class AppButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
+    final colorScheme = context.theme.colorScheme;
 
     Color backgroundColor;
     Color foregroundColor;
@@ -70,7 +71,13 @@ class AppButton extends StatelessWidget {
                       Icon(icon, size: 20),
                       const SizedBox(width: 8),
                     ],
-                    Text(text),
+                    Text(
+                      text,
+                      style: context.textTheme.bodyMedium?.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ],
                 ),
       ),

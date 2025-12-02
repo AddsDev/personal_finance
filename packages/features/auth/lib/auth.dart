@@ -1,5 +1,3 @@
-library auth;
-
 export 'di/auth_dependency_injection.dart';
 
 export 'presentation/pages/login_page.dart';
