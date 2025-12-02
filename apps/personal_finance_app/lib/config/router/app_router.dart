@@ -1,9 +1,11 @@
 import 'package:auth/presentation/bloc/auth_bloc.dart';
 import 'package:auth/presentation/pages/login_page.dart';
 import 'package:auth/presentation/pages/register_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:go_router/go_router.dart';
 import 'package:transactions/domain/entities/transaction.dart';
 import 'package:transactions/presentation/pages/transaction_form_page.dart';
+import 'package:transactions/presentation/pages/transaction_detail_page.dart';
 
 import '../../presentation/dashboard/dashboard_page.dart';
 import 'go_router_refresh_stream.dart';
@@ -59,6 +61,25 @@ class AppRouter {
             transactionToEdit: transaction,
             userId: transaction.userId,
           );
+        },
+      ),
+      GoRoute(
+        path: '/transaction-detail',
+        builder: (context, state) {
+          final transaction = state.extra as TransactionEntity;
+          return TransactionDetailPage(
+            transaction: transaction,
+            onEditTransaction:
+                (TransactionEntity transactionToEdit) =>
+                    context.pushReplacement('/edit-transaction', extra: transactionToEdit),
+          );
+        },
+      ),
+      GoRoute(
+        path: '/stats',
+        builder: (context, state) {
+          final userId = state.extra as String;
+          return Text(userId);
         },
       ),
     ],
