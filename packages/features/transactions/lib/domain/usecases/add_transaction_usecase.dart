@@ -1,5 +1,3 @@
-import 'package:core/errors/failure.dart';
-
 import '../entities/transaction.dart';
 import '../repositories/transactions_repository.dart';
 

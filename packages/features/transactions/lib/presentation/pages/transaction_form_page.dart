@@ -52,6 +52,7 @@ class _TransactionFormView extends StatefulWidget {
 
 class _TransactionFormViewState extends State<_TransactionFormView> {
   final _amountController = TextEditingController();
+  final _calendarController = TextEditingController();
   final _descController = TextEditingController();
 
   @override
@@ -59,7 +60,7 @@ class _TransactionFormViewState extends State<_TransactionFormView> {
     super.initState();
     final state = context.read<TransactionFormCubit>().state;
     if (state.amount > 0) {
-      _amountController.text = state.amount.toString();
+      _amountController.text = state.amount.toStringAsFixed(0);
     }
     _descController.text = state.description;
   }
@@ -173,7 +174,12 @@ class _TransactionFormViewState extends State<_TransactionFormView> {
                   ),
                   const SizedBox(height: 16),
 
-                  InkWell(
+                  AppInput(
+                    label: 'Fecha',
+                    hint: DateFormat.yMMMd().format(DateTime.now()),
+                    controller: _calendarController,
+                    prefixIcon: Icons.calendar_today,
+                    readOnly: true,
                     onTap: () async {
                       final date = await showDatePicker(
                         context: context,
@@ -182,17 +188,12 @@ class _TransactionFormViewState extends State<_TransactionFormView> {
                         lastDate: DateTime(2030),
                       );
                       if (date != null && context.mounted) {
+                        _calendarController.text = DateFormat.yMMMd().format(
+                          date,
+                        );
                         context.read<TransactionFormCubit>().dateChanged(date);
                       }
                     },
-                    child: InputDecorator(
-                      decoration: const InputDecoration(
-                        labelText: 'Fecha',
-                        border: OutlineInputBorder(),
-                        suffixIcon: Icon(Icons.calendar_today),
-                      ),
-                      child: Text(DateFormat.yMMMd().format(state.date)),
-                    ),
                   ),
 
                   const SizedBox(height: 40),

@@ -1,5 +1,3 @@
-library connectivity;
-
 export 'di/connectivity_dependency_injection.dart';
 export 'domain/network_info.dart';
 export 'presentation/bloc/connectivity_bloc.dart';
