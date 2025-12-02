@@ -38,7 +38,8 @@ class AppRouter {
         path: '/dashboard',
         builder: (context, state) {
           return DashboardPage(
-            onAddTransactionTap: (userId) => context.push('/add-transaction', extra: userId),
+            onAddTransactionTap:
+                (userId) => context.push('/add-transaction', extra: userId),
           );
         },
       ),

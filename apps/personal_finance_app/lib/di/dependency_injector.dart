@@ -1,3 +1,4 @@
+import 'package:connectivity/connectivity.dart';
 import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:get_it/get_it.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -19,7 +20,7 @@ Future<void> setupDI() async {
 
   it.registerLazySingleton(() => FirebaseAuth.instance);
 
-
+  ConnectivityDependencyInjection.inject(it);
   AuthDependencyInjection.inject(it);
   TransactionsDependencyInjection.inject(it);
 }
