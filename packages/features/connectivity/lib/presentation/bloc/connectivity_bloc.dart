@@ -1,9 +1,9 @@
 import 'dart:async';
 
-import '../../domain/network_info.dart';
-import 'connectivity_event.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../domain/network_info.dart';
+import 'connectivity_event.dart';
 import 'connectivity_state.dart';
 
 class ConnectivityBloc extends Bloc<ConnectivityEvent, ConnectivityState> {
