@@ -25,9 +25,7 @@ class TransactionTile extends StatelessWidget {
   Widget build(BuildContext context) {
     final isIncome = type == TransactionType.income;
     final amountColor =
-        isIncome
-            ? context.appColors.income
-            : context.appColors.expense;
+        isIncome ? context.appColors.income : context.appColors.expense;
 
     return ListTile(
       onTap: onTap,

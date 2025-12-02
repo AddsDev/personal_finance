@@ -29,28 +29,28 @@ class DashboardTemplate extends StatelessWidget {
           children: [
             Text(
               'Dashboard de',
-              style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                fontSize: 14,
-              ),
+              style: Theme.of(
+                context,
+              ).textTheme.bodySmall?.copyWith(fontSize: 14),
             ),
             Text(
               userName ?? 'Finanzas',
-              style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+              style: Theme.of(
+                context,
+              ).textTheme.titleLarge?.copyWith(fontWeight: FontWeight.bold),
             ),
           ],
         ),
-        actions: actions ?? [
-          if (onActionTap != null)
-            IconButton(
-              onPressed: onActionTap,
-              icon: const CircleAvatar(
-                child: Icon(Icons.logout),
-              ),
-            ),
-          const SizedBox(width: 16),
-        ],
+        actions:
+            actions ??
+            [
+              if (onActionTap != null)
+                IconButton(
+                  onPressed: onActionTap,
+                  icon: const CircleAvatar(child: Icon(Icons.logout)),
+                ),
+              const SizedBox(width: 16),
+            ],
       ),
       body: RefreshIndicator(
         onRefresh: () async {
@@ -69,12 +69,13 @@ class DashboardTemplate extends StatelessWidget {
           ),
         ),
       ),
-      floatingActionButton: onAddTransaction != null
-          ? FloatingActionButton(
-        onPressed: onAddTransaction,
-        child: const Icon(Icons.add),
-      )
-          : null,
+      floatingActionButton:
+          onAddTransaction != null
+              ? FloatingActionButton(
+                onPressed: onAddTransaction,
+                child: const Icon(Icons.add),
+              )
+              : null,
     );
   }
 }

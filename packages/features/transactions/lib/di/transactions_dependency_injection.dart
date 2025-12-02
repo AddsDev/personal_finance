@@ -12,7 +12,6 @@ import '../presentation/bloc/transaction_bloc.dart';
 
 class TransactionsDependencyInjection {
   static void inject(GetIt it) {
-
     //External
     if (!it.isRegistered<FirebaseFirestore>()) {
       it.registerLazySingleton(() {

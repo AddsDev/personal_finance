@@ -25,10 +25,7 @@ class TransactionInfoRow extends StatelessWidget {
           ),
         ),
         const SizedBox(height: 8),
-        Text(
-          value,
-          style: context.textTheme.bodyLarge?.copyWith(fontSize: 18),
-        ),
+        Text(value, style: context.textTheme.bodyLarge?.copyWith(fontSize: 18)),
       ],
     );
   }

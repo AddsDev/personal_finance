@@ -20,11 +20,6 @@ class AuthUserModel extends AuthUser {
   }
 
   AuthUser toEntity() {
-    return AuthUser(
-      id: id,
-      email: email,
-      name: name,
-      photoUrl: photoUrl,
-    );
+    return AuthUser(id: id, email: email, name: name, photoUrl: photoUrl);
   }
 }

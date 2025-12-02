@@ -33,7 +33,6 @@ class AuthDependencyInjection {
       () => LogoutUseCase(it<AuthRepository>()),
     );
 
-
     // BLoCs
     it.registerFactory<AuthBloc>(
       () => AuthBloc(

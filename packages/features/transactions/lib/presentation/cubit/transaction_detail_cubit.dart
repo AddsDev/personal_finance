@@ -6,14 +6,11 @@ class TransactionDetailCubit extends Cubit<TransactionDetailState> {
   final DeleteTransactionUseCase deleteTransactionUseCase;
 
   TransactionDetailCubit({required this.deleteTransactionUseCase})
-      : super(const TransactionDetailState());
+    : super(const TransactionDetailState());
 
   Future<void> deleteTransaction(String id, String userId) async {
     emit(state.copyWith(status: TransactionDetailStatus.loading));
-    deleteTransactionUseCase.call(
-      userId: userId,
-      transactionId: id,
-    );
+    deleteTransactionUseCase.call(userId: userId, transactionId: id);
     emit(state.copyWith(status: TransactionDetailStatus.success));
   }
 }

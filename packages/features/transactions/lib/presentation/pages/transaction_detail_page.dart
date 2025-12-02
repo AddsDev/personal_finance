@@ -63,9 +63,9 @@ class TransactionDetailPage extends StatelessWidget {
                 TransactionInfoRow(
                   label: 'Tipo',
                   value:
-                  transaction.type == TransactionType.expense
-                      ? 'Gasto'
-                      : 'Ingreso',
+                      transaction.type == TransactionType.expense
+                          ? 'Gasto'
+                          : 'Ingreso',
                 ),
               ],
               onDelete: () => _showDeleteConfirmation(context),

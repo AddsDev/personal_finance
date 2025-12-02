@@ -21,10 +21,7 @@ class DashboardHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        BalanceCard(
-          title: 'Saldo Actual',
-          balance: balance,
-        ),
+        BalanceCard(title: 'Saldo Actual', balance: balance),
         const SizedBox(height: 16),
         Row(
           children: [

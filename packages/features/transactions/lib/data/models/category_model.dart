@@ -16,7 +16,7 @@ class CategoryModel extends Category {
       iconKey: json['iconKey'] as String,
       colorValue: json['colorValue'] as int,
       type: TransactionType.values.firstWhere(
-            (e) => e.name == json['type'],
+        (e) => e.name == json['type'],
         orElse: () => TransactionType.expense,
       ),
     );
