@@ -1,0 +1,26 @@
+import 'package:equatable/equatable.dart';
+
+abstract class StatsEvent extends Equatable {
+  const StatsEvent();
+
+  @override
+  List<Object> get props => [];
+}
+
+class StatsSubscriptionRequested extends StatsEvent {
+  final String userId;
+
+  const StatsSubscriptionRequested(this.userId);
+
+  @override
+  List<Object> get props => [userId];
+}
+
+class StatsDateChanged extends StatsEvent {
+  final DateTime date;
+
+  const StatsDateChanged(this.date);
+
+  @override
+  List<Object> get props => [date];
+}
