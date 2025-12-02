@@ -8,6 +8,7 @@ import 'package:transactions/presentation/pages/transaction_form_page.dart';
 import 'package:transactions/presentation/pages/transaction_detail_page.dart';
 
 import '../../presentation/dashboard/dashboard_page.dart';
+import '../../presentation/stats/pages/stats_page.dart';
 import 'go_router_refresh_stream.dart';
 
 class AppRouter {
@@ -79,7 +80,7 @@ class AppRouter {
         path: '/stats',
         builder: (context, state) {
           final userId = state.extra as String;
-          return Text(userId);
+          return StatsPage(userId: userId);
         },
       ),
     ],

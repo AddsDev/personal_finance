@@ -13,7 +13,6 @@ workspace:
   - packages/features/auth
   - packages/features/transactions
   - packages/features/connectivity
-  - packages/features/stats
   - apps/personal_finance_app
 
 dev_dependencies:
