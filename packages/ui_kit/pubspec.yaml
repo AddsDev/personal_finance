@@ -1,6 +1,6 @@
 name: ui_kit
 description: "Design System components for the app."
-version: 0.0.1
+version: 0.0.2
 publish_to: none
 resolution: workspace
 
