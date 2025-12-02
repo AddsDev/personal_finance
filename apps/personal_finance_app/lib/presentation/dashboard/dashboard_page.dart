@@ -38,7 +38,24 @@ class _DashboardPageState extends State<DashboardPage> {
 
     return DashboardTemplate(
       userName: user.name ?? 'Usuario',
-      onActionTap: () => _showLogoutDialog(context),
+      onActionTap: null,
+      actions: [
+        IconButton(
+          onPressed: () => context.push('/stats', extra: user.id),
+          icon: const CircleAvatar(
+            backgroundColor: Colors.white,
+            child: Icon(Icons.bar_chart, color: Colors.black),
+          ),
+        ),
+        const SizedBox(width: 8),
+        IconButton(
+          onPressed: () => _showLogoutDialog(context),
+          icon: const CircleAvatar(
+            child: Icon(Icons.logout),
+          ),
+        ),
+        const SizedBox(width: 16),
+      ],
       onAddTransaction: () => widget.onAddTransactionTap(user.id),
       header: BlocBuilder<TransactionBloc, TransactionState>(
         builder: (context, state) {
@@ -201,34 +218,13 @@ Widget _transactionTile(BuildContext context, TransactionEntity tx) {
         tx.type == category_entity.TransactionType.income
             ? TransactionType.income
             : TransactionType.expense,
-    icon: _mapIcon(tx.category.iconKey),
-    onTap: () => context.push('/edit-transaction', extra: tx),
+    icon: context.mapIconData(tx.category.iconKey),
+    onTap: () => context.push('/transaction-detail', extra: tx),
   );
 }
 
 String _formatDate(DateTime date) {
   return "${date.day}/${date.month}";
-}
-
-IconData _mapIcon(String key) {
-  switch (key) {
-    case 'fastfood':
-      return Icons.fastfood;
-    case 'work':
-      return Icons.work;
-    case 'directions_car':
-      return Icons.directions_car;
-    case 'home':
-      return Icons.home;
-    case 'shopping_cart':
-      return Icons.shopping_cart;
-    case 'movie':
-      return Icons.movie;
-    case 'health_and_safety':
-      return Icons.health_and_safety;
-    default:
-      return Icons.category;
-  }
 }
 
 Widget _buildMobileListContent(
@@ -244,8 +240,17 @@ Widget _buildMobileListContent(
     children:
         transactions.map((tx) {
           return Padding(
-            padding: EdgeInsets.only(bottom: 8),
-            child: _transactionTile(context, tx),
+            padding: const EdgeInsets.symmetric(vertical: 8),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Theme.of(context).cardColor,
+                borderRadius: BorderRadius.circular(12),
+                border: Border.all(
+                  color: Theme.of(context).dividerColor.withAlpha(16),
+                ),
+              ),
+              child: Center(child: _transactionTile(context, tx)),
+            ),
           );
         }).toList(),
   );

@@ -37,7 +37,7 @@ class TransactionListSection extends StatelessWidget {
         const SizedBox(height: 12),
         Container(
           decoration: BoxDecoration(
-            color: context.theme.cardColor,
+            color:  Colors.transparent,
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
