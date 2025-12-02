@@ -1,7 +1,7 @@
 name: personal_finance
 description: "App para gestionar finanzas personales"
 publish_to: 'none'
-version: 1.0.0+1
+version: 1.0.0-beta.1+1
 
 
 environment:
