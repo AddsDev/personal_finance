@@ -13,6 +13,7 @@ workspace:
   - packages/features/auth
   - packages/features/transactions
   - packages/features/connectivity
+  - packages/features/stats
   - apps/personal_finance_app
 
 dev_dependencies:
@@ -44,7 +45,6 @@ melos:
     test:unit:
       run: flutter test
       packageFilters:
-        dirExists: test
 
     quality:check:
       run: format:check && analyze && test:unit
