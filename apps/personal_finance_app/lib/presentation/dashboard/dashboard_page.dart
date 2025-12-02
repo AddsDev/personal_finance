@@ -1,6 +1,6 @@
+import 'package:auth/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:auth/auth.dart';
 import 'package:go_router/go_router.dart';
 import 'package:transactions/domain/entities/category.dart' as category_entity;
 import 'package:transactions/domain/entities/transaction.dart';

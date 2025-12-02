@@ -76,9 +76,9 @@ class TransactionFormCubit extends Cubit<TransactionFormState> {
       );
 
       if (_initialTransaction == null) {
-        await _addTransactionUseCase(transaction);
+        _addTransactionUseCase(transaction);
       } else {
-        await _updateTransactionUseCase(transaction);
+        _updateTransactionUseCase(transaction);
       }
 
       emit(state.copyWith(status: TransactionFormStatus.success));

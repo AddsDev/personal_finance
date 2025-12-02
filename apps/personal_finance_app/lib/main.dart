@@ -1,4 +1,5 @@
 import 'package:auth/presentation/bloc/auth_bloc.dart';
+import 'package:connectivity/connectivity.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:personal_finance_app/config/router/app_router.dart';
@@ -19,17 +20,17 @@ class FinanceApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
+        BlocProvider(create: (context) => it<ConnectivityBloc>()),
         BlocProvider(
           create: (context) => it<AuthBloc>()..add(AuthSubscriptionRequested()),
         ),
-        BlocProvider(
-          create: (context) => it<TransactionBloc>(),
-        ),
+        BlocProvider(create: (context) => it<TransactionBloc>()),
       ],
       child: _AppView(),
     );
   }
 }
+
 class _AppView extends StatefulWidget {
   const _AppView();
 
@@ -55,6 +56,9 @@ class _AppViewState extends State<_AppView> {
       themeMode: ThemeMode.system,
       routerConfig: _appRouter.router,
       debugShowCheckedModeBanner: false,
+      builder: (context, child) {
+        return ConnectionStatusBanner(child: child ?? const SizedBox.shrink());
+      },
     );
   }
 }

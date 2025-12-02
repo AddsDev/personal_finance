@@ -11,7 +11,6 @@ import '../presentation/bloc/transaction_bloc.dart';
 
 class TransactionsDependencyInjection {
   static void inject(GetIt it) {
-    it.registerLazySingleton(() => FirebaseFirestore.instance);
     // Data Sources
     if (!it.isRegistered<TransactionsRemoteDataSource>()) {
       it.registerLazySingleton<TransactionsRemoteDataSource>(
