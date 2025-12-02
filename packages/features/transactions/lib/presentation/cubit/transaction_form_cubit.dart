@@ -20,18 +20,20 @@ class TransactionFormCubit extends Cubit<TransactionFormState> {
     required GetCategoriesUseCase getCategoriesUseCase,
     required String userId,
     TransactionEntity? transaction,
-  })  : _addTransactionUseCase = addTransactionUseCase,
-        _updateTransactionUseCase = updateTransactionUseCase,
-        _getCategoriesUseCase = getCategoriesUseCase,
-        _userId = userId,
-        _initialTransaction = transaction,
-        super(TransactionFormState(
-        date: transaction?.date ?? DateTime.now(),
-        amount: transaction?.amount ?? 0.0,
-        description: transaction?.description ?? '',
-        selectedCategory: transaction?.category,
-        type: transaction?.type ?? TransactionType.expense,
-      ));
+  }) : _addTransactionUseCase = addTransactionUseCase,
+       _updateTransactionUseCase = updateTransactionUseCase,
+       _getCategoriesUseCase = getCategoriesUseCase,
+       _userId = userId,
+       _initialTransaction = transaction,
+       super(
+         TransactionFormState(
+           date: transaction?.date ?? DateTime.now(),
+           amount: transaction?.amount ?? 0.0,
+           description: transaction?.description ?? '',
+           selectedCategory: transaction?.category,
+           type: transaction?.type ?? TransactionType.expense,
+         ),
+       );
 
   Future<void> loadCategories() async {
     try {

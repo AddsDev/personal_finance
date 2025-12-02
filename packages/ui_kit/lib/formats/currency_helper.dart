@@ -5,7 +5,7 @@ class CurrencyHelper {
     locale: 'es_CO',
     symbol: '\$',
     decimalDigits: 0,
-    customPattern: '\u00A4#,##0.00'
+    customPattern: '\u00A4#,##0.00',
   );
 
   static String format(double amount) {

@@ -21,10 +21,10 @@ class Category extends Equatable {
   List<Object?> get props => [id, name, iconKey, colorValue, type];
 
   static const empty = Category(
-      id: '',
-      name: '',
-      iconKey: 'help',
-      colorValue: 0xFF9E9E9E,
-      type: TransactionType.expense
+    id: '',
+    name: '',
+    iconKey: 'help',
+    colorValue: 0xFF9E9E9E,
+    type: TransactionType.expense,
   );
 }

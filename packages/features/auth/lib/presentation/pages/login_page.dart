@@ -48,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
     return BlocConsumer<AuthBloc, AuthState>(
       listener: (context, state) {
         if (state.status == AuthStatus.authenticated) {
-          if(state.errorMessage != null) {
+          if (state.errorMessage != null) {
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(state.errorMessage!),
@@ -56,7 +56,6 @@ class _LoginPageState extends State<LoginPage> {
               ),
             );
           }
-
         }
         if (state.errorMessage != null) {
           ScaffoldMessenger.of(context).showSnackBar(

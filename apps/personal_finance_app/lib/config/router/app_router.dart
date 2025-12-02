@@ -72,7 +72,10 @@ class AppRouter {
             transaction: transaction,
             onEditTransaction:
                 (TransactionEntity transactionToEdit) =>
-                    context.pushReplacement('/edit-transaction', extra: transactionToEdit),
+                    context.pushReplacement(
+                      '/edit-transaction',
+                      extra: transactionToEdit,
+                    ),
           );
         },
       ),

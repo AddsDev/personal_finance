@@ -28,16 +28,13 @@ class TransactionListSection extends StatelessWidget {
               ),
             ),
             if (onViewAll != null)
-              TextButton(
-                onPressed: onViewAll,
-                child: const Text('Ver todo'),
-              ),
+              TextButton(onPressed: onViewAll, child: const Text('Ver todo')),
           ],
         ),
         const SizedBox(height: 12),
         Container(
           decoration: BoxDecoration(
-            color:  Colors.transparent,
+            color: Colors.transparent,
             borderRadius: BorderRadius.circular(16),
             boxShadow: [
               BoxShadow(
@@ -47,9 +44,7 @@ class TransactionListSection extends StatelessWidget {
               ),
             ],
           ),
-          child: Column(
-            children: children,
-          ),
+          child: Column(children: children),
         ),
       ],
     );

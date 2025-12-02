@@ -16,7 +16,9 @@ Future<void> setupDI() async {
   await FirebaseAppCheck.instance.activate(
     providerAndroid: AndroidDebugProvider(),
     providerApple: AppleDebugProvider(),
-    providerWeb: ReCaptchaV3Provider('6LehZx0sAAAAALrk1LdvlzvlZB62bAygGUInUuYK'),
+    providerWeb: ReCaptchaV3Provider(
+      '6LehZx0sAAAAALrk1LdvlzvlZB62bAygGUInUuYK',
+    ),
   );
 
   it.registerLazySingleton(() => FirebaseAuth.instance);
