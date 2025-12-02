@@ -38,7 +38,7 @@ class AppTheme {
       // Inputs - Atomic
       inputDecorationTheme: InputDecorationTheme(
         filled: true,
-        fillColor: const Color(0xFFE0F2FE).withAlpha(77),
+        fillColor: const Color(0xFFE0F2FE).withAlpha(204),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(12),
           borderSide: BorderSide.none,
@@ -132,6 +132,7 @@ class AppTheme {
         style: ElevatedButton.styleFrom(
           backgroundColor: AppPalette.primaryBlue,
           foregroundColor: Colors.white,
+          iconColor: Colors.white,
           elevation: 0,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
