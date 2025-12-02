@@ -8,7 +8,7 @@ class NetworkInfoImpl implements NetworkInfo {
   final Connectivity _connectivity;
 
   NetworkInfoImpl({Connectivity? connectivity})
-      : _connectivity = connectivity ?? Connectivity();
+    : _connectivity = connectivity ?? Connectivity();
 
   @override
   Stream<bool> get isConnectedStream {

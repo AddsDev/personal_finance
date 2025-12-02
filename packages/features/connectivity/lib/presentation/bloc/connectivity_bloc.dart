@@ -10,11 +10,9 @@ class ConnectivityBloc extends Bloc<ConnectivityEvent, ConnectivityState> {
   final NetworkInfo _networkInfo;
   StreamSubscription<bool>? _subscription;
 
-  ConnectivityBloc({
-    required NetworkInfo networkInfo,
-  })  : _networkInfo = networkInfo,
-        super(const ConnectivityState()) {
-
+  ConnectivityBloc({required NetworkInfo networkInfo})
+    : _networkInfo = networkInfo,
+      super(const ConnectivityState()) {
     on<_ConnectivityChanged>(_onConnectivityChanged);
 
     _subscription = _networkInfo.isConnectedStream.listen((isConnected) {
@@ -23,12 +21,11 @@ class ConnectivityBloc extends Bloc<ConnectivityEvent, ConnectivityState> {
   }
 
   Future<void> _onConnectivityChanged(
-      _ConnectivityChanged event,
-      Emitter<ConnectivityState> emit,
-      ) async {
+    _ConnectivityChanged event,
+    Emitter<ConnectivityState> emit,
+  ) async {
     if (event.isConnected) {
       emit(const ConnectivityState(status: ConnectionStatus.online));
-
     } else {
       emit(const ConnectivityState(status: ConnectionStatus.offline));
     }

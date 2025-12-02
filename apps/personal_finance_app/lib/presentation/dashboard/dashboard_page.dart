@@ -50,9 +50,7 @@ class _DashboardPageState extends State<DashboardPage> {
         const SizedBox(width: 8),
         IconButton(
           onPressed: () => _showLogoutDialog(context),
-          icon: const CircleAvatar(
-            child: Icon(Icons.logout),
-          ),
+          icon: const CircleAvatar(child: Icon(Icons.logout)),
         ),
         const SizedBox(width: 16),
       ],

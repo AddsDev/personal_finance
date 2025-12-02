@@ -32,11 +32,11 @@ class TransactionsRepositoryImpl implements TransactionsRepository {
 
   @override
   Future<List<Category>> getCategories() async {
-    if(_categories !=null && _categories!.isNotEmpty) {
+    if (_categories != null && _categories!.isNotEmpty) {
       return _categories!;
     }
 
-    final result =  await _remoteDataSource.getCategories();
+    final result = await _remoteDataSource.getCategories();
     _categories = result;
     return result;
   }

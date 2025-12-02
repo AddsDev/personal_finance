@@ -13,7 +13,6 @@ workspace:
   - packages/features/auth
   - packages/features/transactions
   - packages/features/connectivity
-  - packages/features/stats
   - apps/personal_finance_app
 
 dev_dependencies:
@@ -33,7 +32,7 @@ melos:
   scripts:
     analyze:
       exec:
-        concurrency: 4
+        concurrency: 5
       run: flutter analyze .
 
     format:check:
@@ -42,23 +41,25 @@ melos:
     fix:
       run: dart fix --apply
 
-    test:unit:
-      run: flutter test
-      packageFilters:
+    unit_test:
+      run: melos exec --dir-exists="test" --fail-fast -- flutter test --no-pub --coverage
+      description: Run all Flutter tests in this project.
+      select-package:
+        dir-exists: test
+
+    unit_test_and_coverage:
+      description: Merge all packages coverage tracefiles ignoring data related to generated files.
+      run: |
+        melos exec rm -rf coverage
+        melos run unit_test
+        melos exec -c 1 --file-exists=coverage/lcov.info -- coverde filter --input ./coverage/lcov.info --output MELOS_ROOT_PATH/coverage/filtered.lcov.info --filters \.g\.dart
+        coverde value -i coverage/filtered.lcov.info > MELOS_ROOT_PATH/coverage/result.txt
 
     quality:check:
-      run: format:check && analyze && test:unit
+      run: melos run format:check && melos run analyze && melos run unit_test
 
     run-app:
       description: Run app
       exec: flutter run lib/main.dart
       packageFilters:
         flutter: true
-
-    build:
-      run: flutter pub run build_runner build --delete-conflicting-outputs
-      exec:
-        concurrency: 4
-      packageFilters:
-        flutter: true
-        dependsOn: build_runner

@@ -8,10 +8,10 @@ abstract class AuthRemoteDataSource {
   Future<AuthUserModel> loginWithEmail(String email, String password);
 
   Future<AuthUserModel> registerWithEmail(
-      String name,
-      String email,
-      String password,
-      );
+    String name,
+    String email,
+    String password,
+  );
 
   Future<void> logout();
 }
@@ -20,7 +20,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   final FirebaseAuth _firebaseAuth;
 
   AuthRemoteDataSourceImpl({FirebaseAuth? firebaseAuth})
-      : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance;
+    : _firebaseAuth = firebaseAuth ?? FirebaseAuth.instance;
 
   @override
   Stream<AuthUserModel> get user {
@@ -52,10 +52,10 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<AuthUserModel> registerWithEmail(
-      String name,
-      String email,
-      String password,
-      ) async {
+    String name,
+    String email,
+    String password,
+  ) async {
     try {
       final result = await _firebaseAuth.createUserWithEmailAndPassword(
         email: email,
